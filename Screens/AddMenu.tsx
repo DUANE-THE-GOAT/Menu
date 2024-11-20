@@ -97,17 +97,18 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#f0f8ff', // Light blue background
   },
   title: {
     fontSize: 24,
     marginBottom: 20,
     textAlign: 'center',
     fontWeight: 'bold',
+    color: '#4b0082', // Indigo text
   },
   input: {
     height: 50,
-    borderColor: 'gray',
+    borderColor: '#4682b4', // Steel blue border
     borderWidth: 1,
     marginBottom: 15,
     paddingHorizontal: 10,
@@ -116,5 +117,10 @@ const styles = StyleSheet.create({
   picker: {
     height: 50,
     marginBottom: 15,
+    backgroundColor: '#e6e6fa', // Lavender background
+    borderColor: '#dda0dd', // Plum border
+    borderWidth: 1,
+    borderRadius: 5,
   },
 });
+

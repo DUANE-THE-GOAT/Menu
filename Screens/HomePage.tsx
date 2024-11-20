@@ -21,11 +21,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#fff', // White background
+        backgroundColor: '#f0f8ff', // Light blue background
     },
     title: {
         fontSize: 24,
         marginBottom: 40,
         fontWeight: 'bold',
+        color: '#4b0082', // Indigo text
     },
 });
