@@ -17,6 +17,12 @@ export default function ViewPage({ menuItems }: ViewPageProps) {
         ? menuItems
         : menuItems.filter(item => item.course === selectedCourse);
 
+    // Calculate the average price of the filtered items
+    const averagePrice =
+        filteredMenuItems.length > 0
+            ? filteredMenuItems.reduce((total, item) => total + item.price, 0) / filteredMenuItems.length
+            : 0;
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Menu Items</Text>
@@ -24,7 +30,7 @@ export default function ViewPage({ menuItems }: ViewPageProps) {
             {/* Picker for selecting a course */}
             <Picker
                 selectedValue={selectedCourse}
-                style={styles.picker} // Use picker style
+                style={styles.picker}
                 onValueChange={(itemValue) => setSelectedCourse(itemValue)}
             >
                 <Picker.Item label="All Courses" value="All" />
@@ -33,6 +39,11 @@ export default function ViewPage({ menuItems }: ViewPageProps) {
                 <Picker.Item label="Desserts" value="Desserts" />
                 <Picker.Item label="Drinks" value="Drinks" />
             </Picker>
+
+            {/* Display the average price */}
+            <Text style={styles.averagePrice}>
+                Average Price: R{averagePrice.toFixed(2)}
+            </Text>
 
             {/* List of menu items based on selected course */}
             {filteredMenuItems.length > 0 ? (
@@ -73,6 +84,13 @@ const styles = StyleSheet.create({
     picker: {
         height: 50,
         marginBottom: 20,
+    },
+    averagePrice: {
+        fontSize: 18,
+        textAlign: 'center',
+        marginBottom: 20,
+        fontWeight: 'bold',
+        color: '#333',
     },
     itemContainer: {
         padding: 15,

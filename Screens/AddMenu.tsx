@@ -19,31 +19,42 @@ export default function AddMenu({ setMenuItems, menuItems }: AddMenuProps) {
   const handleAddMenuItem = () => {
     // Basic validation
     if (!dishName || !description || !price) {
-      Alert.alert("All fields are required.");
-      return;
-    }
-    if (Number(price) <= 0) {
-      Alert.alert("Price must be a positive number only.");
+      console.log("All fields are required");
+      Alert.alert("Error", "All fields are required.");
       return;
     }
 
-    const newItem: MenuItem = {
-      dishName,
-      description,
-      course,
-      price: Number(price),
-    };
+    const priceValue = Number(price);
+    if (isNaN(priceValue) || priceValue <= 0) {
+      console.log("Price must be a valid positive number");
+      Alert.alert("Error", "Price must be a valid positive number.");
+      return;
+    }
 
-    setMenuItems([...menuItems, newItem]);
+    try {
+      const newItem: MenuItem = {
+        dishName,
+        description,
+        course,
+        price: priceValue,
+      };
 
-    // Clear input fields after adding the item
-    setDishName('');
-    setDescription('');
-    setCourse('Starters'); // Reset to default value
-    setPrice('');
+      console.log("New menu item added", newItem);
+      // Update menu items state
+      setMenuItems([...menuItems, newItem]);
 
-    // Navigate to the view page to see the menu items
-    navigate('/view');
+      // Clear input fields after adding the item
+      setDishName('');
+      setDescription('');
+      setCourse('Starters'); // Reset to default value
+      setPrice('');
+
+      // Navigate to the view page to see the menu items
+      navigate('/view');
+    } catch (error) {
+      console.log("Error adding menu item", error);
+      Alert.alert("Error", "Failed to add the menu item. Please try again.");
+    }
   };
 
   return (
@@ -65,7 +76,7 @@ export default function AddMenu({ setMenuItems, menuItems }: AddMenuProps) {
       {/* Picker for predefined course list */}
       <Picker
         selectedValue={course}
-        style={styles.picker} // Use picker style
+        style={styles.picker}
         onValueChange={(itemValue) => setCourse(itemValue)}
       >
         <Picker.Item label="Starters" value="Starters" />
@@ -123,4 +134,3 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 });
-
