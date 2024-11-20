@@ -23,7 +23,7 @@ export default function AddMenu({ setMenuItems, menuItems }: AddMenuProps) {
       return;
     }
     if (Number(price) <= 0) {
-      Alert.alert("Price must be a positive number.");
+      Alert.alert("Price must be a positive number only.");
       return;
     }
 
@@ -87,7 +87,7 @@ export default function AddMenu({ setMenuItems, menuItems }: AddMenuProps) {
       <Button title="View Menu Items" onPress={() => navigate('/view')} />
 
       {/* Button to go back to the home page */}
-      <Button title="Go Back" onPress={() => navigate('/')} />
+      <Button title="Go Back home" onPress={() => navigate('/')} />
     </View>
   );
 }
