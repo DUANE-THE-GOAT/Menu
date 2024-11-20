@@ -9,8 +9,8 @@ export default function HomePage() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Welcome to the Menu App</Text>
-            <Button title="Add Menu Item" onPress={() => navigate('/add')} />
-            <Button title="View Menu Items" onPress={() => navigate('/view')} />
+            <Button title="Add Menu Item Here" onPress={() => navigate('/add')} />
+            <Button title="View Menu Items Here" onPress={() => navigate('/view')} />
         </View>
     );
 }
