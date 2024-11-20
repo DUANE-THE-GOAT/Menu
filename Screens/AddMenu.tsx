@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     borderColor: '#4682b4', // Steel blue border
-    borderWidth: 1,
+    borderWidth: 2,
     marginBottom: 15,
     paddingHorizontal: 10,
     borderRadius: 5,
